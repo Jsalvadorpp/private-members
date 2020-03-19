@@ -9,6 +9,30 @@ module SessionHelper
     end
 
     def is_logged?
-        !session['user_id'].nil?
+        #if there's no session , then check cookies
+        if session['user_id'].nil?
+            if cookies.signed['user_id']
+                
+                user = User.find_by(id: cookies.signed['user_id'])
+                if user && user.authenticate_token(cookies['remember_token'])
+                    log_in(user)
+                end     
+            end
+        #session exists
+        else
+            return true
+        end
+    end
+
+    def remember_session(user)
+        user.generate_token
+        cookies.permanent['remember_token'] = user.remember_token
+        cookies.permanent.signed['user_id'] = user.id
+    end
+
+    def forget_session(user)
+        cookies.delete('remember_token')
+        cookies.delete('user_id')
+        user.forget_token()
     end
 end
