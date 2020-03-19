@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root 'events#index' , as: 'home'
 
   get '/signup' => 'users#new'  , as: 'signup'
+  get '/profile' => 'users#profile' , as: 'profile'
   post '/signup' => 'users#create'
 
+  get '/login' => 'session#login' , as: 'login'
+  post '/login' => 'session#create'
+  delete '/logout' => 'session#logout', as: 'logout'
 end
