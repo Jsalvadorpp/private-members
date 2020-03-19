@@ -1,0 +1,12 @@
+<%= form_for(@user, url: '/signup',html: {class: 'container'}) do |f| %>
+
+    <h1>Create a new user</h1>
+
+    <div class='form-group'>
+        <%= f.label :username %>
+        <%= f.text_field :username , class: 'form-control' , placeholder: 'username' %>
+    </div>
+  
+    <%= f.submit "Create account", class: "btn btn-primary" %>
+
+<% end %>

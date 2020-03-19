@@ -1,0 +1,24 @@
+<div class='navbar navbar-expand-md navbar-dark bg-dark'>
+
+    <%= link_to 'PrivateMembers', home_path , class: 'navbar-brand' %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggler">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id='navbar-toggler'>
+
+        <ul class='navbar-nav'>
+            <li class='<%= 'active' if current_page?(home_path) %>'><%= link_to 'Events', home_path , class: 'nav-link' %></li>
+        </ul>
+
+        <ul class='navbar-nav ml-auto'>
+            <li class='<%= 'active' if current_page?(signup_path) %>'><%= link_to 'Signup', signup_path , class: 'nav-link' %></li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+
