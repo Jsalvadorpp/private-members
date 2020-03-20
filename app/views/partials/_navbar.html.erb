@@ -18,14 +18,19 @@
 
         <ul class='navbar-nav'>
             <li class='<%= 'active' if current_page?(home_path) %>'><%= link_to 'Events', home_path , class: 'nav-link' %></li>
-            <% if is_logged? %>
-                <li class='<%= 'active' if current_page?(profile_path) %>'><%= link_to 'Profile', profile_path , class: 'nav-link' %></li>
-            <% end %>
         </ul>
 
         <ul class='navbar-nav ml-auto'>
 
             <% if is_logged? %>
+                 <li class='dropdown'>
+                    <a href="#" class='nav-link dropdown-toggle' data-toggle="dropdown">More</a>
+                    <div class='dropdown-menu dropdown-menu-right'>
+                        <%= link_to 'Profile', profile_path , class: 'dropdown-item'  %>
+                        <%= link_to 'New event', new_user_event_path(current_user.id) , class: 'dropdown-item'    %>
+                    </div>
+                 </li>
+
                 <li><%= link_to "Logout", logout_path, method: "delete", class: 'nav-link' %></li>
             <% else %>
                 <li class='<%= 'active' if current_page?(signup_path) %>'><%= link_to 'Signup', signup_path , class: 'nav-link' %></li>

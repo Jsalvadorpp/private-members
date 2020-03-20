@@ -1,0 +1,28 @@
+<%= form_for([@user,@event] ,html: {class: 'container'}) do |f| %>
+
+    <h1>Make a new event</h1>
+
+    <div class='form-group'>
+        <%= f.label :title %>
+        <%= f.text_field :title , class: 'form-control' , placeholder: 'title' %>
+    </div>
+
+    <div class='form-group'>
+        <%= f.label :location %>
+        <%= f.text_field :location , class: 'form-control' , placeholder: 'location' %>
+    </div>
+
+    <div class='form-group'>
+        <%= f.label :date %>
+        <%= f.date_select :date %><br>
+        <%= f.label :time %>
+        <%= f.time_select :date %>
+    </div>
+
+    <div class='form-group'>
+        <%= f.text_area :description , class: 'form-control' , placeholder: 'description' %>
+    </div>
+    
+    <%= f.submit "event", class: "btn btn-primary" %>
+
+<% end %>
