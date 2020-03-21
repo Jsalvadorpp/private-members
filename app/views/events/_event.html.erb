@@ -1,0 +1,7 @@
+<div class='card event shadow'>
+    <h4 class='card-header text-primary'><%= link_to event.title , user_event_path(event.creator.id,event.id) %> </h4>
+    <span class='card-footer'>
+        <p><span>Location: </span><%= event.location %></p>
+        <p><span>Starts at: </span><%= event.date %></p>
+    </span>
+</div>

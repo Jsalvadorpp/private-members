@@ -1,0 +1,18 @@
+<div class='container'>
+   
+    <div class='card event'>
+    <h4 class='card-header text-primary'><%= @event.title %> </h4>
+    <div class='card-body'>
+        <p><span>Created by: </span><%= @event.creator.username %></p>
+        <p><span>Description: </span><%= @event.description %></p>
+    </div>
+    <span class='card-footer'>
+        <p><span>Location: </span><%= @event.location %></p>
+        <p><span>Starts at: </span><%= @event.date %></p>
+        <% if is_logged? %>
+            <button class='btn btn-primary'>Go to event</button>
+        <% end %>
+    </span>
+    </div>
+
+</div>

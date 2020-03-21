@@ -1,11 +1,16 @@
 class EventsController < ApplicationController
 
     def index
+        @events = Event.all.order("created_at DESC")
     end
 
     def new
         @user = current_user
         @event = Event.new
+    end
+
+    def show
+        @event = Event.find_by(id: params['id'])
     end
 
     def create

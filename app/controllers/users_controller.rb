@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     end
 
     def profile
+        @user = current_user
+        @events = @user.events.order("created_at DESC")
     end
 
 
