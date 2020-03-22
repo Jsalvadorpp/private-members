@@ -9,10 +9,22 @@
     <span class='card-footer'>
         <p><span>Location: </span><%= @event.location %></p>
         <p><span>Starts at: </span><%= @event.date %></p>
-        <% if is_logged? %>
-            <button class='btn btn-primary'>Go to event</button>
+        <% if is_logged? && current_user != @event.creator %>
+            <% if attende_event?%>
+                <%= button_to 'Go to event',event_path(event_id: @event.id) , method: 'post', class: 'btn btn-primary'%>
+            <% else %>
+                <%= button_to "Don't go to event",event_path(event_id: @event.id) , method: 'delete', class: 'btn btn-secondary'%>
+            <% end %>
         <% end %>
     </span>
     </div>
+
+    <p><strong>Attendees:</strong></p>
+    <hr>
+    <ul>
+        <% @event.invitations.each do |invitation| %>
+            <li><%= invitation.attendee.username %></li>
+        <% end %>
+    </ul>
 
 </div>

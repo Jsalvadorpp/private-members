@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'events#index' , as: 'home'
+  post '/event' => 'events#new_invitation'
+  delete '/event' => 'events#remove_invitation'
 
   resources :users, only: [:show] do
     resources :events , except: [:update,:destroy,:edit]
