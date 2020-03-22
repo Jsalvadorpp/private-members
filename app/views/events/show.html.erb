@@ -9,7 +9,7 @@
     <span class='card-footer'>
         <p><span>Location: </span><%= @event.location %></p>
         <p><span>Starts at: </span><%= @event.date %></p>
-        <% if is_logged? && current_user != @event.creator %>
+        <% if is_logged? && current_user != @event.creator && event_not_expired? %>
             <% if attende_event?%>
                 <%= button_to 'Go to event',event_path(event_id: @event.id) , method: 'post', class: 'btn btn-primary'%>
             <% else %>
