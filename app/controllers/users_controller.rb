@@ -18,8 +18,9 @@ class UsersController < ApplicationController
         @user = current_user
         @events_created_by_user = @user.events.order("created_at DESC")
 
-        
-        @attending_events = Event.joins(:invitations).where("invitations.attendee_id = #{@user.id}")
+        attending_events = Event.joins(:invitations).where("invitations.attendee_id = #{@user.id}")
+        @upcoming_events = attending_events.upcoming
+        @previous_events = attending_events.previous
     end
 
 

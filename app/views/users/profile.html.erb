@@ -2,16 +2,24 @@
     <h1>User Profile</h1>
     <div class='row'> 
 
-        <div class='col-sm-6'>
+        <div class='col-sm-4'>
             <h3>All your events: </h3>
             <% @events_created_by_user.each do |event|%>
                 <%= render partial: 'events/event' , locals: {event: event} %>
             <% end%>
         </div>
 
-        <div class='col-sm-6'>
-            <h3>Attending events: </h3>
-            <% @attending_events.each do |event|%>
+        <div class='col-sm-4'>
+            <h3>Upcoming events: </h3>
+            <% @upcoming_events.each do |event|%>
+                <%= render partial: 'events/event' , locals: {event: event} %>
+            <% end%>
+            
+        </div>
+
+        <div class='col-sm-4'>
+            <h3>Previous events: </h3>
+            <% @previous_events.each do |event|%>
                 <%= render partial: 'events/event' , locals: {event: event} %>
             <% end%>
             
