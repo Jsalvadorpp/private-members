@@ -16,7 +16,10 @@ class UsersController < ApplicationController
 
     def profile
         @user = current_user
-        @events = @user.events.order("created_at DESC")
+        @events_created_by_user = @user.events.order("created_at DESC")
+
+        
+        @attending_events = Event.joins(:invitations).where("invitations.attendee_id = #{@user.id}")
     end
 
 
